@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Dashboard() {
   return (
-    <main className="flex flex-col justify-center gap-6 h-full text-center max-w-5xl mx-auto my-12">
+    <main className="flex flex-col justify-center gap-6 h-full text-center max-w-5xl mx-auto my-12 mx-3">
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold">Invoices</h1>
         <p>

@@ -1,0 +1,1 @@
+ALTER TABLE "invoices" ALTER COLUMN "value" SET DATA TYPE numeric;

@@ -6,27 +6,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { createInvoiceRecord } from "@/app/actions";
 import { SyntheticEvent, useState, startTransition } from "react";
 import SubmitButton from "@/components/SubmitButton";
+import Form from "next/form";
 
 export default function NewInvoices() {
   const [state, setState] = useState("ready");
 
   async function handleOnSubmit(event: SyntheticEvent) {
-    event.preventDefault();
-    if (state === "pending") return;
+    if (state === "pending") {
+      event.preventDefault();
+      return;
+    }
     setState("pending");
-    const data = event.target as HTMLFormElement;
-    startTransition(async () => {
-      const formData = new FormData(data);
-      await createInvoiceRecord(formData);
-    });
   }
 
   return (
-    <main className="flex flex-col justify-center gap-6 h-full max-w-5xl mx-auto my-12 mx-3">
+    <main className="flex flex-col justify-center gap-6 h-full max-w-5xl mx-3 my-12">
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold">Create a New Invoice</h1>
       </div>
-      <form
+      <Form
         action={createInvoiceRecord}
         onSubmit={handleOnSubmit}
         className="grid gap-4 max-w-xs"
@@ -61,7 +59,7 @@ export default function NewInvoices() {
         <div>
           <SubmitButton />
         </div>
-      </form>
+      </Form>
     </main>
   );
 }

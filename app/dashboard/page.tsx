@@ -7,9 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CirclePlus } from "lucide-react";
+import StatusBadge from "@/components/StatusBadge";
 import Link from "next/link";
 import { db } from "@/db";
 import { Invoices } from "@/db/schema";
@@ -67,7 +67,7 @@ export default async function Dashboard() {
                 </TableCell>
                 <TableCell className="text-center p-0">
                   <Link href={`/invoices/${invoice.id}`} className="block p-4">
-                    <Badge className="rounded-full">{invoice.status}</Badge>
+                    <StatusBadge status={invoice.status} />
                   </Link>
                 </TableCell>
                 <TableCell className="text-right p-0">

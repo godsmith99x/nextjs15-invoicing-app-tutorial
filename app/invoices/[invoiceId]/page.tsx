@@ -1,11 +1,10 @@
 import { db } from "@/db";
 import { Invoices } from "@/db/schema";
 
-export default async function InvoicePage({
-  params,
-}: {
-  params: { invoiceId: string };
+export default async function InvoicePage(props: {
+  params: Promise<{ invoiceId: string }>;
 }) {
+  const params = await props.params;
   const invoiceId = parseInt(params.invoiceId);
   return (
     <main className="flex flex-col justify-center gap-6 h-full text-center max-w-5xl mx-3 my-12">

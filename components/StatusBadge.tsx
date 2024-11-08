@@ -11,12 +11,9 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
     <Badge
       className={cn(
         "rounded-full",
-        status === "draft" && "bg-blue-500",
         status === "open" && "bg-blue-500",
         status === "paid" && "bg-green-500",
-        status === "partial" && "bg-blue-500",
-        status === "refunded" && "bg-blue-500",
-        status === "sent" && "bg-blue-500",
+        status === "partial" && "bg-teal-300",
         status === "uncollectible" && "bg-red-500",
         status === "void" && "bg-zinc-700"
       )}

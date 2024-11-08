@@ -8,12 +8,9 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const statusEnum = pgEnum("status", [
-  "draft",
   "open",
   "paid",
   "partial",
-  "refunded",
-  "sent",
   "uncollectible",
   "void",
 ]);

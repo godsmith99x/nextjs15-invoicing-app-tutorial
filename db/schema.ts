@@ -7,12 +7,20 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 
+export enum StatusEnum {
+  Open = "open",
+  Paid = "paid",
+  Partial = "partial",
+  Uncollectible = "uncollectible",
+  Void = "void",
+}
+
 export const statusEnum = pgEnum("status", [
-  "open",
-  "paid",
-  "partial",
-  "uncollectible",
-  "void",
+  StatusEnum.Open,
+  StatusEnum.Paid,
+  StatusEnum.Partial,
+  StatusEnum.Uncollectible,
+  StatusEnum.Void,
 ]);
 
 export const Invoices = pgTable("invoices", {

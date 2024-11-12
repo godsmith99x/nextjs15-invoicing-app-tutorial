@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Result } from "postcss";
 
 interface StatusBadgeProps {
   status: string;
@@ -10,7 +9,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
   return (
     <Badge
       className={cn(
-        "rounded-full",
+        "rounded-full capitalize",
         status === "open" && "bg-blue-500",
         status === "paid" && "bg-green-500",
         status === "partial" && "bg-teal-300",

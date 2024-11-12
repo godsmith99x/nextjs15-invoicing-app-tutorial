@@ -2,6 +2,7 @@ import { db } from "@/db";
 import { Invoices } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import StatusBadge from "@/components/StatusBadge";
+import { notFound } from "next/navigation";
 
 export default async function InvoicePage(props: {
   params: Promise<{ invoiceId: string }>;
@@ -10,13 +11,7 @@ export default async function InvoicePage(props: {
   const invoiceId = parseInt(params.invoiceId);
 
   if (isNaN(invoiceId)) {
-    return (
-      <main className="flex flex-col justify-center gap-6 h-full text-center max-w-5xl mx-3 my-12">
-        <div className="flex justify-between">
-          <h1 className="text-3xl font-bold">Invalid Invoice ID</h1>
-        </div>
-      </main>
-    );
+    throw new Error("Invalid invoice ID");
   }
 
   const [invoice] = await db
@@ -25,14 +20,8 @@ export default async function InvoicePage(props: {
     .where(eq(Invoices.id, invoiceId))
     .limit(1);
 
-  if (invoice === undefined) {
-    return (
-      <main className="flex flex-col justify-center gap-6 h-full text-center max-w-5xl mx-3 my-12">
-        <div className="flex justify-between">
-          <h1 className="text-3xl font-bold">Invoice Not Found</h1>
-        </div>
-      </main>
-    );
+  if (!invoice) {
+    notFound();
   }
 
   return (

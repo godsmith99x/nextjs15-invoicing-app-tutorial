@@ -9,8 +9,7 @@ export async function createInvoiceRecord(formData: FormData) {
   const description = String(formData.get("description"));
 
   if (isNaN(parseFloat(value))) {
-    console.error(`Value ${value} is not a number`);
-    return;
+    throw new Error(`Value ${formData.get("value")} is not a number`);
   }
 
   const submissionResults = await db
